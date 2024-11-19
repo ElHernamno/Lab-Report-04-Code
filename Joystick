@@ -1,0 +1,32 @@
+#include <Stepper.h>
+
+const int spr = 2048; // # of steps pre revolution
+const int rolePerMinute = 15;
+const int pinX = 1;
+
+Stepper myStepper(spr, 2, 3, 4, 5);
+
+void setup() {
+myStepper.setSpeed(rolePerMinute);
+}
+
+void loop() {
+int a = analogRead(pinX)
+if ((a > 400) && ( a < 520)) 
+{
+for (int i = 2; i < 6; i++) 
+{
+digitalWrite(i, 0); 
+}
+}
+else if (a < 400)
+{
+myStepper.setSpeed(rolePerMinute);
+myStepper.step(-30);
+}
+else if (a > 530)
+{
+myStepper.setSpeed(rolePerMinute);
+myStepper.step(30);
+}
+}
