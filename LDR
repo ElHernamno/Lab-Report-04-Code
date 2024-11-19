@@ -1,0 +1,19 @@
+#include <Servo.h>
+
+Servo myservo; //create servo object to control servo
+
+int LDR = A0; //sets LDR to analog pin A0
+int val; //variable to read the value from analog pin
+
+void setup() {
+myservo.attatch(9); //attached the servo on pin 9 to the servo object
+Serial.begin(9600);
+}
+
+void loop() {
+val = analogRead(LDR); //reads value of LDR (0-1023)
+int light = map(val, 101, 445, 0, 180); //scales numbers to be used in servo
+myservo.write(light); //sets the servo position to the scaled value
+Serial.println(val);
+delay(15);
+}
