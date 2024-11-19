@@ -1,8 +1,8 @@
-#include <Stepper.h>
+#include <Stepper.h>  // stepper library
 
 const int spr = 2048; // # of steps pre revolution
-const int rolePerMinute = 15;
-const int pinX = 1;
+const int rolePerMinute = 15;  //sets role per minute. similar to rotations per minute rpm
+const int pinX = 1; //sets analog pin connected to x output
 
 Stepper myStepper(spr, 2, 3, 4, 5);
 
