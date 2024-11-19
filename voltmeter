@@ -1,0 +1,22 @@
+#include <Servo.h>
+
+Servo myservo; //creates servo object to control a servo
+
+int potpin = A0; //analog pin connected to potentiometer
+int val; //variable for analog pin value
+
+void setup() {
+  myservo.attach(9);  //attaches servo on pin 9 to servo object
+  Serial.begin(9600);
+    }
+
+    void loop() {
+      val = analogRead(potpin);  //reads potentiometer value
+      val = map(val, 0, 1023, 180, 0);  //scale for usage of numbers in servo
+      int volt = map(val, 0, 1023, 0, 500); //turns # between 0-1023 to # between 0-500
+      float voltage = volt/100.0; //calculates voltage with decimal value
+      Serial.println(voltage); //prints voltage value on serial monitor
+      Serial.println("V");  //prints V on serial monitor
+      myservo.write(val);  //sets servo position to previously scaled value
+      delay(15);
+    }
